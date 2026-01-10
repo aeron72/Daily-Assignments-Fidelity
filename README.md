@@ -1,78 +1,186 @@
-# Daily-Assignments-Fidelity
-# Todo Manager Sprint 1
- ## Problem Statement
- Todo Manager is an application which can Manage our Tasks and keep track of our Tasks. In the course of 3 week we will be creating a Todo manager.
- ## User Stories
-1. As a user I should be able to print my name on the screen
-2. As a user I should be able to list at least 5 tasks for the day.
-3. As a user I should be able to see all the tasks in increasing and decreasing order.
-4. As a user I should be able to see the repeated tasks. 
-## Instructions:-
-1. Please use simple system.out.println to print the name 
-2. Please use simple variables to store all tasks 
-3. Please use simple if else to arrange the task in an order 
-4. Please use if else to check the repeated tasks 
-5. Estimated completion time of the challenge will be 2hr. 
-6. Make sure you're uploading the code into git and giving the access to your mentor.
+# Todo Manager
 
+A command-line task management application developed through an iterative sprint approach, demonstrating progressive Java programming concepts from basic control structures to object-oriented design patterns.
 
+**Author:** Aeron Flores
 
+---
 
-# Todo Manager Sprint 2
-## Problem Statement 
-Todo Manager is an application which can Manage our Tasks and keep track of our Tasks. In the course of 3 week we will be creating a Todo manager. 
-## User Stories 
-1. As a user I should be able to add the task into an array 
-2. As a user I should be able to update the task in the array 
-3. As a user I should be able to delete the task in the array 
-4. As a user I should be able to search a task from an array 
-## Instructions:- 
-1. Please refactor the code created in spring 1. 
-2. Please use arrays to store the tasks. 
-3. The application can be exited only if user enters 0 to exit. Else user should see the menu again and again.
-4. Estimated completion time of the challenge will be 2hr. 
-5. Make sure you are uploading the code into git and giving the access to your mentor.
+## Project Overview
 
+This project showcases the evolution of a todo management system across four sprints, each building upon the previous version with enhanced features and improved code architecture. The application progresses from simple task listing to a fully-featured system with user authentication and role-based access control.
 
-# Todo Manager Sprint 3
-## Problem Statement
-Todo Manager is an application which can Manage our Tasks and keep track of our Tasks. In the course of 3 week we will be creating a Todo manager. 
-## User Stories 
-1. As a user I should be able to add the task into an array 
-2. As a user I should be able to update the task in the array 
-3. As a user I should be able to delete the task in the array 
-4. As a user I should be able to search a task from an array 
-5. As a user I should be able to assignee the task to an user. 
-## Instructions:- 
-1. Please refactor the code created in spring 2. 
-2. Please create a task pojo. 
-3. The task object should have a. TaskId(number auto generated) b. TaskTitle(String entered by the user) c. Task Text( String entered by the user) d. assignedTo(String entered by the user) 
-4. Please use arrays to store the tasks objects. 
-5. All the CRUD operations should happen in a dao class. Main should contain only menu. 
-6. The application can be exited only if user enters 0 to exit. Else user should see the menu again and again. 
-7. Estimated completion time of the challenge will be 2hr. 
-8. Make sure you are uploading the code into git and giving the access to your mentor
+---
 
+## Sprint Evolution
 
+### Sprint 1: Foundation
+**File:** `TodoManagerSprint1.java`
 
-# Todo Manager Sprint 4
-## Problem Statement 
-Todo Manager is an application which can Manage our Tasks and keep track of our Tasks. In the course of 3 week we will be creating a Todo manager. 
-## User Stories 
-1. As a user I should be able to register and login to the application. 
-2. As a user I can be either the client or visitor. 
-3. AS a visitor i can only see the tasks assigned to me 
-4. As a client I should be able to add the task into an array 
-5. As a client I should be able to update the task in the array 
-6. As a client I should be able to delete the task in the array 
-7. As a client I should be able to search a task from an array 
-8. As a client I should be able to assign the task to a visitor. 
-## Instructions:- 
-1. Please refactor the code created in spring 3. 
-2. Please create a user as a parent class and client and visitor should be child classes. 
-3. Please use arrays to store the user objects 
-4. All the CRUD operations should happen in a dao class. Main should contain only menu. 
-5. please use userDAO and taskDAO interfaces and userDAOimpl and taskDAOImpl as classes implements the interface 
-6. The application can be exited only if user enters 0 to exit. Else user should see the menu again and again. 
-7. Estimated completion time of the challenge will be 2hr. 
-8. Make sure you are uploading the code into git and giving the access to your mentor.
+**Features:**
+- Display user name and welcome message
+- List 5 hardcoded tasks
+- Sort tasks alphabetically (ascending and descending)
+- Detect duplicate tasks
+
+**Key Concepts:**
+- Basic variables and strings
+- Manual bubble sort implementation using if-else statements
+- Array manipulation
+- Boolean logic for duplicate detection
+
+---
+
+### Sprint 2: Dynamic Task Management
+**File:** `TodoManagerSprint2.java`
+
+**Features:**
+- Interactive menu-driven interface
+- Add, view, update, and delete tasks
+- Search tasks by keyword
+- Sort tasks dynamically (A-Z / Z-A)
+- Check for duplicate tasks
+- Support for up to 100 tasks
+
+**Key Concepts:**
+- Scanner for user input
+- While loops for menu navigation
+- Static methods for code organization
+- Array resizing and shifting
+- Input validation and error handling
+
+---
+
+### Sprint 3: Object-Oriented Refactoring
+**File:** `TodoManagerSprint3.java`
+
+**Features:**
+- Enhanced task structure with ID, title, description, and assignee
+- CRUD operations (Create, Read, Update, Delete)
+- Search across multiple task fields
+- Improved duplicate detection by task title
+
+**Key Concepts:**
+- POJO (Plain Old Java Object) design pattern
+- DAO (Data Access Object) pattern
+- Encapsulation with getters and setters
+- Separation of concerns (Task class vs TaskDAO class)
+- Object-oriented design principles
+
+---
+
+### Sprint 4: User Authentication & Authorization
+**File:** `TodoManagerSprint4.java`
+
+**Features:**
+- User registration and login system
+- Two user roles: Client and Visitor
+- **Client privileges:** Full CRUD access to all tasks
+- **Visitor privileges:** View only assigned tasks
+- Role-based menu systems
+- User management and viewing
+
+**Key Concepts:**
+- Class inheritance (User → Client/Visitor)
+- Interface implementation (UserDAO, TaskDAO)
+- Polymorphism and abstract interfaces
+- Authentication flow
+- Role-based access control (RBAC)
+
+---
+
+## Usage Guide
+
+### Sprint 4 Example Workflow
+
+1. **Registration**
+   - Choose option 1 to register
+   - Enter username and password
+   - Select user type (Client or Visitor)
+
+2. **Login**
+   - Choose option 2 to login
+   - Enter credentials
+
+3. **Client Actions**
+   - Add tasks and assign them to users
+   - View, update, or delete any task
+   - Search and sort tasks
+   - Check for duplicates
+   - View all registered users
+
+4. **Visitor Actions**
+   - View tasks assigned to them
+   - Read-only access
+
+---
+
+## Architecture
+
+### Design Patterns Used
+
+**Sprint 1-2:**
+- Procedural programming with static methods
+
+**Sprint 3:**
+- POJO pattern for Task entity
+- DAO pattern for data access layer
+
+**Sprint 4:**
+- Interface-based design
+- Inheritance hierarchy (User → Client/Visitor)
+- Implementation classes (UserDAOImpl, TaskDAOImpl)
+- Separation of authentication and business logic
+
+### Class Structure (Sprint 4)
+
+```
+User (Parent Class)
+├── Client (extends User)
+└── Visitor (extends User)
+
+Task (Entity/POJO)
+
+Interfaces:
+├── UserDAO
+└── TaskDAO
+
+Implementations:
+├── UserDAOImpl (implements UserDAO)
+└── TaskDAOImpl (implements TaskDAO)
+
+TodoManagerSprint4 (Main class - Menu & UI only)
+```
+
+---
+
+## Learning Objectives Achieved
+
+- **Control Structures:** if-else, while loops, for loops
+- **Data Structures:** Arrays, array manipulation
+- **OOP Principles:** Encapsulation, inheritance, polymorphism, abstraction
+- **Design Patterns:** POJO, DAO, Interface-based design
+- **User Input:** Scanner class and input validation
+- **Error Handling:** Input validation, boundary checking
+- **Code Organization:** Separation of concerns, modular design
+- **Authentication:** User management and role-based access
+
+---
+
+## Refactoring Journey
+
+Each sprint demonstrates progressive refactoring:
+
+1. **Sprint 1 → 2:** From hardcoded values to dynamic user input
+2. **Sprint 2 → 3:** From procedural to object-oriented design
+3. **Sprint 3 → 4:** From single-user to multi-user with authentication
+
+Code comments throughout the sprints highlight the evolution and reasoning behind design decisions.
+
+---
+
+## Author
+
+**Aeron Flores**
+
+Feel free to explore each sprint to see the progression of Java programming concepts and best practices!
