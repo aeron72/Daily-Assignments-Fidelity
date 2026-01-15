@@ -1,6 +1,6 @@
 # Todo Manager
 
-A command-line task management application developed through an iterative sprint approach, demonstrating progressive Java programming concepts from basic control structures to object-oriented design patterns.
+A command-line task management application developed through an iterative sprint approach, demonstrating progressive Java programming concepts from basic control structures to object-oriented design patterns with exception handling.
 
 **Author:** Aeron Flores
 
@@ -8,7 +8,7 @@ A command-line task management application developed through an iterative sprint
 
 ## Project Overview
 
-This project showcases the evolution of a todo management system across four sprints, each building upon the previous version with enhanced features and improved code architecture. The application progresses from simple task listing to a fully-featured system with user authentication and role-based access control.
+This project showcases the evolution of a todo management system across five sprints, each building upon the previous version with enhanced features and improved code architecture. The application progresses from simple task listing to a fully-featured system with user authentication, role-based access control, task completion tracking, and custom exception handling.
 
 ---
 
@@ -89,9 +89,30 @@ This project showcases the evolution of a todo management system across four spr
 
 ---
 
+### Sprint 5: Task Completion & Exception Handling
+**File:** `TodoManagerSprint5.java`
+
+**Features:**
+- Task completion dates with validation
+- Mark tasks as completed (Visitor feature)
+- Filter tasks by completion status (completed/incomplete)
+- Sort tasks by completion date (earliest/latest first)
+- Custom exception handling for all operations
+- Improved logout flow (can re-login as different user)
+
+**Key Concepts:**
+- LocalDate for date handling
+- DateTimeFormatter for date formatting (DD-MM-YYYY)
+- Custom exceptions (ClientException, VisitorException, TaskException, UserException)
+- Try-catch blocks for error handling
+- Date validation (prevent past dates)
+- Boolean flags for task completion status
+
+---
+
 ## Usage Guide
 
-### Sprint 4 Example Workflow
+### Sprint 5 Example Workflow
 
 1. **Registration**
    - Choose option 1 to register
@@ -103,15 +124,22 @@ This project showcases the evolution of a todo management system across four spr
    - Enter credentials
 
 3. **Client Actions**
-   - Add tasks and assign them to users
+   - Add tasks with completion dates (format: DD-MM-YYYY)
+   - Assign tasks to registered users
    - View, update, or delete any task
-   - Search and sort tasks
+   - Search and sort tasks by date
    - Check for duplicates
    - View all registered users
 
 4. **Visitor Actions**
    - View tasks assigned to them
-   - Read-only access
+   - Sort their tasks by completion date
+   - Mark tasks as completed
+   - View completed vs incomplete tasks separately
+
+5. **Logout & Re-login**
+   - Logout returns to authentication menu
+   - Can login as different user without restarting app
 
 ---
 
@@ -132,14 +160,31 @@ This project showcases the evolution of a todo management system across four spr
 - Implementation classes (UserDAOImpl, TaskDAOImpl)
 - Separation of authentication and business logic
 
-### Class Structure (Sprint 4)
+**Sprint 5:**
+- Custom exception hierarchy
+- Date validation layer
+- Enhanced error handling with try-catch blocks
+
+### Class Structure (Sprint 5)
 
 ```
+Custom Exceptions:
+├── ClientException
+├── VisitorException
+├── TaskException
+└── UserException
+
 User (Parent Class)
 ├── Client (extends User)
 └── Visitor (extends User)
 
 Task (Entity/POJO)
+├── taskId (auto-generated)
+├── taskTitle
+├── taskText
+├── assignedTo
+├── completionDate (LocalDate)
+└── isCompleted (boolean)
 
 Interfaces:
 ├── UserDAO
@@ -149,8 +194,25 @@ Implementations:
 ├── UserDAOImpl (implements UserDAO)
 └── TaskDAOImpl (implements TaskDAO)
 
-TodoManagerSprint4 (Main class - Menu & UI only)
+TodoManagerSprint5 (Main class - Menu & UI only)
 ```
+
+---
+
+## Date Format
+
+**Important:** All dates must use the format **DD-MM-YYYY**
+
+Examples:
+- `15-01-2026` (January 15, 2026)
+- `01-12-2026` (December 1, 2026)
+- `25-03-2026` (March 25, 2026)
+
+**Rules:**
+- Day and month must be 2 digits
+- Year must be 4 digits
+- Dates cannot be in the past
+- Use hyphens (-) as separators
 
 ---
 
@@ -161,9 +223,11 @@ TodoManagerSprint4 (Main class - Menu & UI only)
 - **OOP Principles:** Encapsulation, inheritance, polymorphism, abstraction
 - **Design Patterns:** POJO, DAO, Interface-based design
 - **User Input:** Scanner class and input validation
-- **Error Handling:** Input validation, boundary checking
+- **Error Handling:** Custom exceptions, try-catch blocks, input validation
+- **Date Handling:** LocalDate, DateTimeFormatter, date parsing
 - **Code Organization:** Separation of concerns, modular design
 - **Authentication:** User management and role-based access
+- **Exception Hierarchy:** Custom exception classes for different error types
 
 ---
 
@@ -174,8 +238,33 @@ Each sprint demonstrates progressive refactoring:
 1. **Sprint 1 → 2:** From hardcoded values to dynamic user input
 2. **Sprint 2 → 3:** From procedural to object-oriented design
 3. **Sprint 3 → 4:** From single-user to multi-user with authentication
+4. **Sprint 4 → 5:** Added date validation, task completion tracking, and comprehensive exception handling
 
 Code comments throughout the sprints highlight the evolution and reasoning behind design decisions.
+
+---
+
+## Exception Handling (Sprint 5)
+
+### Custom Exceptions
+
+**ClientException**
+- Thrown when clients perform invalid operations
+- Examples: No users available, user doesn't exist
+
+**VisitorException**
+- Thrown when visitors try unauthorized actions
+- Examples: Marking someone else's task, task already completed
+
+**TaskException**
+- Thrown for task-related errors
+- Examples: Empty fields, invalid dates, task not found
+
+**UserException**
+- Thrown for authentication errors
+- Examples: Empty credentials, duplicate username, invalid login
+
+All exceptions provide clear error messages to guide users in correcting their input.
 
 ---
 
